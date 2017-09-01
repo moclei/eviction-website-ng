@@ -1,0 +1,67 @@
+
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <p-panel header="Search by first and last name">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2">
+            First Name *:
+          </div>
+          <div class="ui-grid-col-6">
+            <input pInputText type="text" formControlName="inputFirstName" placeholder="Required"/>
+          </div>
+          <div class="ui-grid-col-4">
+            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['inputFirstName'].valid&&userform.controls['inputFirstName'].dirty">
+              <i class="fa fa-close"></i>
+              Firstname is required
+            </div>
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2">
+            Last Name *:
+          </div>
+          <div class="ui-grid-col-6">
+            <input pInputText type="text" formControlName="inputLastName" placeholder="Required"/>
+          </div>
+          <div class="ui-grid-col-4">
+            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['inputLastName'].valid&&userform.controls['inputLastName'].dirty">
+              <i class="fa fa-close"></i>
+              Lastname is required
+            </div>
+          </div>
+        </div>
+
+
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2">
+            Search similar sounding names? *:
+          </div>
+          <div class="ui-grid-col-6">
+            <p-checkbox binary="true" formControlName="soundexCheck"></p-checkbox>
+          </div>
+        </div>
+
+
+
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2"></div>
+          <div class="ui-grid-col-6">
+            <button pButton type="submit" label="Submit" [disabled]="!userform.valid"></button>
+          </div>
+          <div class="ui-grid-col-4"></div>
+        </div>
+        <!--<div style="text-align:center;margin-top:20px" *ngIf="submitted">
+          Form Submitted
+          <br>
+          {{diagnostic}}
+        </div>-->
+
+      </div>
+    </p-panel>
+
+    <!--<input id="inputFirstName" type="text" size="30" pInputText [(ngModel)]="firstName">
+    <input id="inputLastName" type="text" size="30" pInputText [(ngModel)]="lastName">
+    <button pButton type="button" (click)="onclick()" label="Search"></button>
+    <h4></h4>
+    <p-checkbox [(ngModel)]="useSoundex" binary="true" label="Search similar sounding names?"></p-checkbox>-->
+  </form>
