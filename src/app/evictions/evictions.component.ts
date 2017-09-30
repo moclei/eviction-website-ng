@@ -3,12 +3,7 @@ import {Eviction} from '../eviction.model';
 
 @Component({
   selector: 'app-evictions',
-  template: `
-    <div class="panel panel-default">
-      <app-eviction-search-input (searchDone)="onOpen($event)"></app-eviction-search-input>
-      <app-eviction-list [evictionSource]="evictions"></app-eviction-list>
-    </div>
-  `,
+  templateUrl: './evictions.component.html',
   styleUrls: ['./evictions.component.css']
 })
 export class EvictionsComponent implements OnInit {

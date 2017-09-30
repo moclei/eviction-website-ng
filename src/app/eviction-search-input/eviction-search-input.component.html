@@ -1,6 +1,7 @@
+<md-card >
 
-  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
-    <p-panel header="Search by first and last name">
+<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+    <!-- <p-panel header="Search by first and last name"> -->
       <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
         <div class="ui-grid-row">
           <div class="ui-grid-col-2">
@@ -57,7 +58,7 @@
         </div>-->
 
       </div>
-    </p-panel>
+   <!-- </p-panel>-->
 
     <!--<input id="inputFirstName" type="text" size="30" pInputText [(ngModel)]="firstName">
     <input id="inputLastName" type="text" size="30" pInputText [(ngModel)]="lastName">
@@ -65,3 +66,5 @@
     <h4></h4>
     <p-checkbox [(ngModel)]="useSoundex" binary="true" label="Search similar sounding names?"></p-checkbox>-->
   </form>
+
+</md-card>

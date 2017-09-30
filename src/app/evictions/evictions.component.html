@@ -1,3 +1,9 @@
-<p>
-  evictions works!
-</p>
+
+<md-card>
+    <app-eviction-search-input (searchDone)="onOpen($event)"></app-eviction-search-input>
+</md-card>
+<div class="example-spacer"></div>
+<md-card>
+  <app-eviction-list [evictionSource]="evictions"></app-eviction-list>
+</md-card>
+
