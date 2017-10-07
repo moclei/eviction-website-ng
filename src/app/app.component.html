@@ -1,20 +1,56 @@
-<md-sidenav-container >
-<md-toolbar color="primary" >
-  <md-toolbar-row>
-    <span class="example-spacer"></span>
-    <section class="mat-typography" >
-      <h1 class="mat-display-3 eviction-header" >Eviction Search Bexar County</h1>
-    </section>
-  </md-toolbar-row>
-  <md-toolbar-row>
-    <span class="example-spacer"></span>
-    <section class="mat-typography">
-      <h2 class="mat-display-1 eviction-header">All 6 JP's</h2>
-    </section>
-  </md-toolbar-row>
 
-</md-toolbar>
-</md-sidenav-container>
+  <!-- Navigation -->
+  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="#page-top">Eviction Search Bexar County</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="hidden">
+            <a href="#page-top"></a>
+          </li>
+          <li class="page-scroll">
+            <a href="#search">Search</a>
+          </li>
+          <li class="page-scroll">
+            <a href="#info">Info</a>
+          </li>
+          <!-- <li class="page-scroll">
+               <a href="#about">About</a>
+           </li>
+           <li class="page-scroll">
+               <a href="#contact">Contact</a>
+           </li>-->
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <div class="container" id="maincontent" tabindex="-1">
+      <div class="row">
+        <div class="col-lg-12">
+          <img class="img-responsive" src="/img/profile.png" alt="">
+          <div class="intro-text">
+            <h2 class="name">Search Bexar County Court Records</h2>
+            <hr class="star-light">
+            <span class="skills">Small Claims Courts Filings and Judgements in Bexar County. Use this information wisely.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
   <div class="m-t-1">
     <router-outlet></router-outlet>
   </div>

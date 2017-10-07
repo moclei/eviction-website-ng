@@ -19,6 +19,8 @@ import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { AlertModule } from 'ngx-bootstrap';
+import { HomePageComponent } from './home-page/home-page.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AlertModule } from 'ngx-bootstrap';
     EvictionsComponent,
     EvictionListComponent,
     EvictionSearchInputComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomePageComponent,
+    InfoComponent
   ],
   imports: [
     AlertModule.forRoot(),
