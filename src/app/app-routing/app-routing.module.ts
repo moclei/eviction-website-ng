@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {EvictionsComponent} from '../evictions/evictions.component';
-import {HomePageComponent} from "../home-page/home-page.component";
-import {InfoComponent} from "../info/info.component";
+import {HomePageComponent} from '../home-page/home-page.component';
+import {InfoComponent} from '../info/info.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},

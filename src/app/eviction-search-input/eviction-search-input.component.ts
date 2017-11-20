@@ -14,28 +14,26 @@ export class EvictionSearchInputComponent implements OnInit {
   firstName: string;
   lastName: string;
   useSoundex = true;
-  userform: FormGroup;
+  userForm: FormGroup;
   submitted: boolean;
   @Output() searchDone: EventEmitter<Eviction[]> = new EventEmitter();
 
-  constructor(private evictionService: EvictionService, private fb: FormBuilder) { }
+  hasResult = false;
+  f: any;
+
+  constructor(private evictionService: EvictionService) { }
 
   ngOnInit() {
-    this.userform = this.fb.group({
+    this.userForm = new FormGroup({
       'inputFirstName': new FormControl('', Validators.required),
       'inputLastName': new FormControl('', Validators.required),
-      'soundexCheck': new FormControl(false)
+      'soundexCheck': new FormControl('')
     });
   }
+  /*
   onclick(){
     console.log('eviction-search-input, firstName: ' + this.firstName + ', lastName: ' + this.lastName + ', soundex: ' + this.useSoundex);
-    /*this.evictionService.getEvictions(this.firstName, this.lastName, this.useSoundex)
-      .subscribe(
-        (evictions: Eviction[]) => {
-          // this.evictions = evictions;
-          this.evictionService.searchPerformed(this.evictions);
-          console.log(evictions[0]);
-        });*/
+
 
     this.evictionService.getEvictions(this.firstName, this.lastName, this.useSoundex)
       .subscribe(
@@ -43,18 +41,23 @@ export class EvictionSearchInputComponent implements OnInit {
           this.searchDone.emit(evictions);
         }
       );
-  }
+  }*/
 
   onSubmit() {
     this.submitted = true;
-    this.evictionService.getEvictions(this.userform.value.inputFirstName , this.userform.value.inputLastName, this.userform.value.soundexCheck)
+    this.firstName = this.userForm.value.inputFirstName;
+    this.lastName = this.userForm.value.inputLastName;
+    this.useSoundex = this.userForm.value.soundexCheck;
+    this.evictionService.getEvictions(this.firstName , this.lastName, this.useSoundex)
       .subscribe(
         (evictions: Eviction[]) => {
           this.searchDone.emit(evictions);
         }
       );
-    // this.msgs = [];
-    // this.msgs.push({severity:'info', summary:'Success', detail:'Form Submitted'});
+    this.hasResult = true;
   }
 
+  isResult() {
+    return this.hasResult;
+  }
 }
