@@ -11,7 +11,8 @@ import { EvictionSearchInputComponent } from './eviction-search-input/eviction-s
 import { DataTableModule, SharedModule, InputTextModule, ButtonModule, CheckboxModule, DialogModule, PanelModule } from 'primeng/primeng';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { MdToolbarModule, MdCardModule, MdTableModule } from '@angular/material'
+import { MatToolbarModule, MatCardModule, MatTableModule, MatProgressSpinnerModule, MatProgressBarModule } from '@angular/material'
+import {MatButtonModule, MatCheckboxModule, MatMenuModule, MatIconModule, MatInputModule, MatSelectModule} from '@angular/material';
 
 import { EvictionService} from './eviction.service';
 import { HttpModule} from '@angular/http';
@@ -47,10 +48,18 @@ import { InfoComponent } from './info/info.component';
     PanelModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MdToolbarModule,
-    MdCardModule,
-    MdTableModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatTableModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
     AppRoutingModule,
+    MatButtonModule
   ],
   providers: [
     EvictionService

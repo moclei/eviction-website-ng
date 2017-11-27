@@ -1,109 +1,131 @@
-<p-dataTable [value]="evictionSource" resizableColumns="true" expandableRows="true" [responsive]="true" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
-  <p-footer *ngIf="evictionSource; else elseBlock">{{evictionSource.length}} matching records found</p-footer>
-  <p-column expander="true" [style]="{'width':'50px'}" styleClass="col-icon"></p-column>
-  <p-column field="recordType" header="Record Type" [sortable]="true"></p-column>
-  <p-column field="caseFileDate" header="Case File Date" [sortable]="true">
-    <ng-template pTemplate="body" let-record="rowData">
-      {{record.caseFileDate | date:'shortDate'}}
-    </ng-template>
-  </p-column>
-  <p-column field="combinedDefendantName" [style]="{'width':'150px'}" header="Defendant Name" [sortable]="true"></p-column>
-  <p-column field="combinedDefAddress" [style]="{'width':'350px'}" header="Def. Address"></p-column>
-  <p-column field="defendantZip" [style]="{'width':'75px'}" header="Def. ZIP" [sortable]="true"></p-column>
-  <!--<p-column field="defendantDOB" header="Def. DOB">
-    <ng-template pTemplate="body" let-order="rowData">
-      {{order.defendantDOB | date:'shortDate'}}
-    </ng-template>
-  </p-column>-->
-
-  <p-column field="plaintiffName" header="Plaintiff Name" [sortable]="true"></p-column>
-  <!-- <p-column field="combinedPlAddress" [style]="{'width':'300px'}" header="Pl. Address"></p-column>
-   <p-column field="plaintiffZip" header="Pl. ZIP"></p-column>-->
-  <!--<p-column field="plaintiffPhone" header="Pl. Phone"></p-column>-->
-
-  <!--<p-column field="plaintiffCorp" header="Pl. Corp."></p-column>-->
-
-  <!--<p-column field="caseNumber" header="Case Number"></p-column>-->
-
-  <!--<p-column field="caseCode" header="Case Code"></p-column>-->
-  <!--<p-column field="caseStatus" header="Case Status"></p-column>-->
-  <!--<p-column field="caseType" header="Case Type"></p-column>-->
-
-  <p-column field="dispositionDate" header="Disposition Date" [sortable]="true">
-      <ng-template pTemplate="body" let-order="rowData">
-        {{order.dispositionDate | date:'shortDate'}}
+<div id="results" *ngIf="evictionSource;">
+  <h4>Results:</h4>
+  <p-dataTable [value]="evictionSource"  expandableRows="true" [responsive]="true" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+    <p-footer *ngIf="evictionSource; else elseBlock">{{evictionSource.length}} matching records found</p-footer>
+    <p-column expander="true" [style]="{'width':'50px'}" styleClass="col-icon"></p-column>
+    <p-column field="recordType" header="Record Type" [sortable]="true"></p-column>
+    <p-column field="caseFileDate" header="Case File Date" [sortable]="true">
+      <ng-template pTemplate="body" let-record="rowData">
+        {{record.caseFileDate | date:'shortDate'}}
       </ng-template>
-  </p-column>
-  <p-column field="dispAmountStr" header="Disp. Amount" [sortable]="true"></p-column>
-  <p-column field="disposition" header="Disposition" [sortable]="true"></p-column>
+    </p-column>
+    <p-column field="combinedDefendantName" [style]="{'width':'150px'}" header="Defendant Name" [sortable]="true"></p-column>
+    <p-column field="combinedDefAddress" [style]="{'width':'350px'}" header="Def. Address"></p-column>
+    <p-column field="defendantZip" [style]="{'width':'75px'}" header="Def. ZIP" [sortable]="true"></p-column>
+    <!--<p-column field="defendantDOB" header="Def. DOB">
+      <ng-template pTemplate="body" let-order="rowData">
+        {{order.defendantDOB | date:'shortDate'}}
+      </ng-template>
+    </p-column>-->
 
-  <!--<p-column field="personAliasId" header="Person Alias"></p-column>-->
+    <p-column field="plaintiffName" header="Plaintiff Name" [sortable]="true"></p-column>
+    <!-- <p-column field="combinedPlAddress" [style]="{'width':'300px'}" header="Pl. Address"></p-column>
+     <p-column field="plaintiffZip" header="Pl. ZIP"></p-column>-->
+    <!--<p-column field="plaintiffPhone" header="Pl. Phone"></p-column>-->
 
-  <ng-template let-eviction pTemplate="rowexpansion">
-    <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px">
-      <div class="ui-grid-row">
-        <div class="ui-grid-col-9">
-          <div class="ui-grid ui-grid-responsive ui-grid-pad">
-            <div class="ui-grid-row">
-              <div class="ui-grid-col-2 label">Case Number: </div>
-              <div class="ui-grid-col-10">{{eviction.caseNumber}}</div>
-            </div>
-            <div class="ui-grid-row">
-              <div class="ui-grid-col-2 label">Defendant Date of birth: </div>
-              <div class="ui-grid-col-10"> {{eviction.defendantDOB ? (eviction.defendantDOB | date:'shortDate') : "None supplied" }}</div>
-            </div>
-            <div class="ui-grid-row">
-              <div class="ui-grid-col-2 label">Plaintiff Address: </div>
-              <div class="ui-grid-col-10">{{eviction.plaintiffAddress}}</div>
-            </div>
-            <div class="ui-grid-row">
-              <div class="ui-grid-col-2 label">Plaintiff ZIP: </div>
-              <div class="ui-grid-col-10">{{eviction.plaintiffZip}}</div>
-            </div>
-            <div class="ui-grid-row">
-              <div class="ui-grid-col-2 label">Plaintiff Phone: </div>
-              <div class="ui-grid-col-10">{{eviction.plaintiffPhone}}</div>
-            </div>
-            <div class="ui-grid-row">
-              <div class="ui-grid-col-2 label">Plaintiff is Corporation?: </div>
-              <div class="ui-grid-col-10">{{eviction.plaintiffCorp}}</div>
-            </div>
-            <div class="ui-grid-row">
-              <div class="ui-grid-col-2 label">Case Code: </div>
-              <div class="ui-grid-col-10">{{eviction.caseStatusCd}}</div>
-            </div>
-            <div class="ui-grid-row">
-              <div class="ui-grid-col-2 label">Case Type: </div>
-              <div class="ui-grid-col-10">{{eviction.caseType}}</div>
+    <!--<p-column field="plaintiffCorp" header="Pl. Corp."></p-column>-->
+
+    <!--<p-column field="caseNumber" header="Case Number"></p-column>-->
+
+    <!--<p-column field="caseCode" header="Case Code"></p-column>-->
+    <!--<p-column field="caseStatus" header="Case Status"></p-column>-->
+    <!--<p-column field="caseType" header="Case Type"></p-column>-->
+
+    <p-column field="dispositionDate" header="Disposition Date" [sortable]="true">
+        <ng-template pTemplate="body" let-order="rowData">
+          {{order.dispositionDate | date:'shortDate'}}
+        </ng-template>
+    </p-column>
+    <p-column field="dispAmountStr" header="Disp. Amount" [sortable]="true"></p-column>
+    <p-column field="disposition" header="Disposition" [sortable]="true"></p-column>
+
+    <!--<p-column field="personAliasId" header="Person Alias"></p-column>-->
+
+    <ng-template let-eviction pTemplate="rowexpansion">
+      <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px">
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-9">
+            <div class="ui-grid ui-grid-responsive ui-grid-pad">
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-2 label">Case Number: </div>
+                <div class="ui-grid-col-10">{{eviction.caseNumber}}</div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-2 label">Defendant Date of birth: </div>
+                <div class="ui-grid-col-10"> {{eviction.defendantDOB ? (eviction.defendantDOB | date:'shortDate') : "None supplied" }}</div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-2 label">Plaintiff Address: </div>
+                <div class="ui-grid-col-10">{{eviction.plaintiffAddress}}</div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-2 label">Plaintiff ZIP: </div>
+                <div class="ui-grid-col-10">{{eviction.plaintiffZip}}</div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-2 label">Plaintiff Phone: </div>
+                <div class="ui-grid-col-10">{{eviction.plaintiffPhone}}</div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-2 label">Plaintiff is Corporation?: </div>
+                <div class="ui-grid-col-10">{{eviction.plaintiffCorp}}</div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-2 label">Case Code: </div>
+                <div class="ui-grid-col-10">{{eviction.caseStatusCd}}</div>
+              </div>
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-2 label">Case Type: </div>
+                <div class="ui-grid-col-10">{{eviction.caseType}}</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </ng-template>
-</p-dataTable>
+    </ng-template>
+  </p-dataTable>
+</div>
 
-<!--
-<md-table [dataSource]="evictionSource">
+<div class="mat-table-container mat-elevation-z8" *ngIf="evictionSource;">
+  <div class="mat-table-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
 
-  <ng-container mdColumnDef="firstName">
-    <md-header-cell *mdHeaderCellDef> First Name </md-header-cell>
-    <md-cell *mdCellDef="let row"> {{row.defendantFirstName}} </md-cell>
-  </ng-container>
+  <mat-table #table [dataSource]="dataSource">
 
+    <!-- Defendant Name Column -->
+    <ng-container matColumnDef="combinedDefendantName">
+      <mat-header-cell *matHeaderCellDef>Defendant Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.combinedDefendantName}} </mat-cell>
+    </ng-container>
 
-  <ng-container mdColumnDef="defAddress">
-    <md-header-cell *mdHeaderCellDef> Address </md-header-cell>
-    <md-cell *mdCellDef="let row"> {{row.defendantAddress}} </md-cell>
-  </ng-container>
+    <!-- Address Column -->
+    <ng-container matColumnDef="combinedDefAddress">
+      <mat-header-cell *matHeaderCellDef>Address</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.combinedDefAddress}} </mat-cell>
+    </ng-container>
 
-  <ng-container mdColumnDef="defCity">
-    <md-header-cell *mdHeaderCellDef> City </md-header-cell>
-    <md-cell *mdCellDef="let row"> {{row.defendantCity}} </md-cell>
-  </ng-container>
+    <!-- ZIP Column -->
+    <ng-container matColumnDef="defendantZip">
+      <mat-header-cell *matHeaderCellDef>ZIP</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.defendantZip}} </mat-cell>
+    </ng-container>
 
+    <!-- Plaintiff Name Column -->
+    <ng-container matColumnDef="plaintiffName">
+      <mat-header-cell *matHeaderCellDef>Plaintiff Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.plaintiffName}} </mat-cell>
+    </ng-container>
 
-  <md-header-row *mdHeaderRowDef="['firstName', 'defAddress', 'defCity']"></md-header-row>
-  <md-row *mdRowDef="let row; columns: ['firstName', 'defAddress', 'defCity']"></md-row>
-</md-table>
--->
+    <!-- Disposition Date Column -->
+    <ng-container matColumnDef="dispositionDate">
+      <mat-header-cell *matHeaderCellDef>Disposition Date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.dispositionDate | date:'shortDate'}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

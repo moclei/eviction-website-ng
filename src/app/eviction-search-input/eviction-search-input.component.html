@@ -1,49 +1,21 @@
-
-<!-- Portfolio Grid Section -->
-<section id="search">
-  <div class="container">
-    <div class="row text-center">
-      <div class="col-lg-6">
-          <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
-            <div class="form-group">
-              <label for="inputFirstName">First Name</label>
-              <input
-                min="0"
-                id="inputFirstName"
-                class="form-control"
-                formControlName="inputFirstName">
-            </div>
-            <div class="form-group">
-              <label for="inputLastName">Last Name</label>
-              <input
-                type="text"
-                min="0"
-                id="inputLastName"
-                class="form-control"
-                formControlName="inputLastName">
-            </div>
-            <div class="form-group">
-              <label for="soundexCheck">Search Similar Sounding Names?</label>
-              <input
-                type="checkbox"
-                id="soundexCheck"
-                class="form-control"
-                formControlName="soundexCheck" checked>
-            </div>
-            <button
-              class="btn btn-primary"
-              type="submit"
-              [disabled]="!userForm.valid">Submit</button>
-            <!--<button
-              type="button"
-              class="btn btn-danger"
-              (click)="onClear()">Clear</button>-->
-          </form>
-      </div>
-          <hr>
-          <div *ngIf="isResult()" class="col-md-8 col-md-offset-2">
-            <h3 >Results:</h3>
-          </div>
-      </div>
+<div id="search">
+    <h3 class="example-h2">Search by Name:</h3>
+    <div >
+      <form class="example-container" [formGroup]="userForm">
+        <mat-form-field>
+          <input formControlName="inputFirstName" matInput placeholder="First Name" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="inputLastName" matInput placeholder="Last Name" required>
+        </mat-form-field>
+        <mat-checkbox formControlName="soundexCheck">Search for names that sound the same</mat-checkbox>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          (click)="onSubmit()"
+          [disabled]="!userForm.valid">Submit</button>
+        <mat-progress-bar mode="indeterminate" *ngIf="submitted"></mat-progress-bar>
+      </form>
+    </div>
   </div>
-</section>
+

@@ -1,6 +1,7 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, OnChanges, Input, SimpleChanges} from '@angular/core';
 import {EvictionService} from '../eviction.service';
 import {Eviction} from '../eviction.model';
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-eviction-list',
@@ -8,21 +9,29 @@ import {Eviction} from '../eviction.model';
   providers: [EvictionService],
   styleUrls: ['./eviction-list.component.css']
 })
-export class EvictionListComponent implements OnInit {
+export class EvictionListComponent implements OnInit, OnChanges{
   numEvictions: number;
-
-  // TODO: Test
   @Input() evictionSource: Eviction[] = null;
+  // Added code for mat-table
+  displayedColumns = ['combinedDefendantName', 'combinedDefAddress', 'defendantZip', 'plaintiffName', 'dispositionDate'];
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = null;
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+  // End of added code for mat-table
+
   constructor(private evictionService: EvictionService) {
   }
 
   ngOnInit() {
-    /*this.evictionService.getEvictions('Juan', 'Ramirez', true)
-      .subscribe(
-        (evictions: Eviction[]) => {
-          this.evictions = evictions;
-        }
-      );*/
+
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    this.dataSource = new MatTableDataSource(this.evictionSource);
   }
 
 }

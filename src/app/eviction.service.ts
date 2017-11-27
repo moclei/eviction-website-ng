@@ -80,11 +80,11 @@ export class EvictionService {
         const evictions = response.json().items;
         const transformedEvictions: Eviction[] = [];
          console.log('evictions.service.getEvictions: response is: ' + response);
-        // console.log('evictions.service.getEvictions: evictions is: ' + evictions);
-        // console.log('evictions.service.getEvictions: response.json() is: ' + response.json());
+         console.log('evictions.service.getEvictions: evictions is: ' + evictions);
+         console.log('evictions.service.getEvictions: response.json() is: ' + response.json());
         const responseJson = response.json();
         for (const eviction of evictions) {
-          // console.log('eviction.service, getEvictions.map(): eviction = ' + eviction.toString() + ', evictions: ' + evictions)
+           console.log('eviction.service, getEvictions.map(): eviction = ' + eviction.toString() + ', evictions: ' + evictions)
           transformedEvictions.push(new Eviction(
             eviction.idJudgementsAndFilings,
             eviction.DefendantFirstName,
@@ -112,6 +112,7 @@ export class EvictionService {
             eviction.PersonAliasID)
           );
         }
+        console.log('Evictions Service-> Step 2')
         const myTransformedEvictions = _.uniqBy(transformedEvictions, function (v) {
           return v.combinedDefendantName + ' ' + v.caseNumber + ' ' + v.disposition;
         });

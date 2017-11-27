@@ -24,11 +24,18 @@ export class EvictionSearchInputComponent implements OnInit {
   constructor(private evictionService: EvictionService) { }
 
   ngOnInit() {
+    /*
+    this.userForm = new FormGroup({
+      'inputFirstName': new FormControl('', Validators.required),
+      'inputLastName': new FormControl('', Validators.required),
+      'soundexCheck': new FormControl('')
+    });*/
     this.userForm = new FormGroup({
       'inputFirstName': new FormControl('', Validators.required),
       'inputLastName': new FormControl('', Validators.required),
       'soundexCheck': new FormControl('')
     });
+
   }
   /*
   onclick(){
@@ -42,8 +49,8 @@ export class EvictionSearchInputComponent implements OnInit {
         }
       );
   }*/
-
   onSubmit() {
+    // window.print();
     this.submitted = true;
     this.firstName = this.userForm.value.inputFirstName;
     this.lastName = this.userForm.value.inputLastName;
@@ -52,6 +59,7 @@ export class EvictionSearchInputComponent implements OnInit {
       .subscribe(
         (evictions: Eviction[]) => {
           this.searchDone.emit(evictions);
+          this.submitted = false;
         }
       );
     this.hasResult = true;
