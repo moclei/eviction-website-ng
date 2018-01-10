@@ -1,7 +1,8 @@
-import {Component, OnInit, OnChanges, Input, SimpleChanges} from '@angular/core';
+import {Component, OnInit, OnChanges, AfterViewInit, Input, SimpleChanges, ViewChild, Inject} from '@angular/core';
 import {EvictionService} from '../eviction.service';
 import {Eviction} from '../eviction.model';
-import {MatTableDataSource} from '@angular/material';
+import {MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatPaginator} from '@angular/material';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-eviction-list',
@@ -9,29 +10,64 @@ import {MatTableDataSource} from '@angular/material';
   providers: [EvictionService],
   styleUrls: ['./eviction-list.component.css']
 })
-export class EvictionListComponent implements OnInit, OnChanges{
-  numEvictions: number;
+export class EvictionListComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() evictionSource: Eviction[] = null;
-  // Added code for mat-table
-  displayedColumns = ['combinedDefendantName', 'combinedDefAddress', 'defendantZip', 'plaintiffName', 'dispositionDate'];
-  // dataSource = new MatTableDataSource(ELEMENT_DATA);
-  dataSource = null;
+  displayedColumns = ['combinedDefendantName', 'recordType', 'combinedDefAddress', 'defendantZip', 'plaintiffName', 'dispositionDate'];
+  dataSource = new MatTableDataSource();
 
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor(private evictionService: EvictionService, public dialog: MatDialog) {
   }
-  // End of added code for mat-table
 
-  constructor(private evictionService: EvictionService) {
+  openDialog(element): void {
+    console.log('openDialog(element), element.plaintiffName: ' + element.plaintiffName);
+    const dialogPos = {top: '10em'};
+
+    const dialogRef = this.dialog.open(EvictionDialogComponent, {
+      width: '60em',
+      data: element,
+      position: dialogPos
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   ngOnInit() {
-
   }
+
+  ngAfterViewInit() {
+  }
+
   ngOnChanges(changes: SimpleChanges) {
-    this.dataSource = new MatTableDataSource(this.evictionSource);
+    this.dataSource.data =  this.evictionSource;
+
+    // Observable.interval(2000).subscribe(x => {
+    if ( this.evictionSource && this.evictionSource.length > 0) {
+      Observable.interval(100).subscribe(x => {
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      });
+    }
+  }
+}
+
+@Component({
+  selector: 'app-eviction-dialog',
+  templateUrl: 'eviction-dialog.component.html',
+})
+export class EvictionDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<EvictionDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }
+

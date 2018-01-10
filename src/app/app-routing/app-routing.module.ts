@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {EvictionsComponent} from '../evictions/evictions.component';
 import {HomePageComponent} from '../home-page/home-page.component';
 import {InfoComponent} from '../info/info.component';
+import {EvictionUploadComponent} from '../eviction-upload/eviction-upload.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -11,7 +12,7 @@ const routes: Routes = [
    {path: 'home', component: HomePageComponent},
    {path: 'search', component: EvictionsComponent},
    {path: 'info', component: InfoComponent},
-  // {path: '**', component: HomeComponent}
+   {path: 'upload', component: EvictionUploadComponent}
 ];
 
 

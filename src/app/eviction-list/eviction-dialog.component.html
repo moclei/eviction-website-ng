@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Record Details</h1>
+<div mat-dialog-content>
+  <h3>Record Type: {{data.recordType}}</h3>
+  <h4>Defendant Information: </h4>
+  <mat-list>
+    <mat-list-item>Name: {{data.combinedDefendantName}}</mat-list-item>
+    <mat-list-item>Address: {{data.combinedDefAddress}}</mat-list-item>
+    <mat-list-item>ZIP: {{data.defendantZip}}</mat-list-item>
+    <mat-list-item>Defendant DOB: {{data.defendantDOB}}</mat-list-item>
+  </mat-list>
+  <h4>Plaintiff Information: </h4>
+  <mat-list>
+    <mat-list-item>Name: {{data.plaintiffName}}</mat-list-item>
+    <mat-list-item>Address: {{data.combinedPlAddress}}</mat-list-item>
+    <mat-list-item>ZIP: {{data.plaintiffZip}}</mat-list-item>
+    <mat-list-item>Phone: {{data.plaintiffPhone}}</mat-list-item>
+    <mat-list-item>Is Corporation?: {{data.plaintiffCorp}}</mat-list-item>
+    <mat-list-item>Plaintiff Code: {{data.personAliasId}}</mat-list-item>
+  </mat-list>
+  <h4>Case Information: </h4>
+  <mat-list>
+    <mat-list-item>File Date: {{data.caseFileDate}}</mat-list-item>
+    <mat-list-item>Case Number: {{data.caseNumber}}</mat-list-item>
+    <mat-list-item>Status Code: {{data.caseStatusCd}}</mat-list-item>
+    <mat-list-item>Status: {{data.caseStatus}}</mat-list-item>
+    <mat-list-item>Case Type: {{data.caseType}}</mat-list-item>
+  </mat-list>
+  <h4>Disposition Information: </h4>
+  <mat-list>
+    <mat-list-item>Disposition: {{data.disposition}}</mat-list-item>
+    <mat-list-item>Date: {{data.dispositionDate}}</mat-list-item>
+    <mat-list-item>Amount: {{data.dispAmountStr}}</mat-list-item>
+  </mat-list>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.plaintiffName" tabindex="1">Ok</button>
+</div>

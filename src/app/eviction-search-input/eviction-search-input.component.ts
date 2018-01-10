@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Validators, FormControl, FormGroup, FormBuilder} from '@angular/forms';
+import {Validators, FormControl, FormGroup} from '@angular/forms';
 import {Eviction} from '../eviction.model';
 import {EvictionService} from '../eviction.service';
 
@@ -37,18 +37,7 @@ export class EvictionSearchInputComponent implements OnInit {
     });
 
   }
-  /*
-  onclick(){
-    console.log('eviction-search-input, firstName: ' + this.firstName + ', lastName: ' + this.lastName + ', soundex: ' + this.useSoundex);
 
-
-    this.evictionService.getEvictions(this.firstName, this.lastName, this.useSoundex)
-      .subscribe(
-        (evictions: Eviction[]) => {
-          this.searchDone.emit(evictions);
-        }
-      );
-  }*/
   onSubmit() {
     // window.print();
     this.submitted = true;

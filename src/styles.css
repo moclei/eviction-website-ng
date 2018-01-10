@@ -37,9 +37,6 @@ input.ng-invalid.ng-touched {
   padding: 100px 0px 0px 0px;
 }
 
-
-
-
 /* Structure */
 .mat-table-container {
   display: flex;
@@ -59,5 +56,23 @@ input.ng-invalid.ng-touched {
 
 .mat-table {
   overflow: auto;
-  max-height: 500px;
+  max-height: 550px;
+}
+
+.cdk-column-defendantZip {
+  max-width: 5em;
+}
+.cdk-column-combinedDefendantName {
+
+}
+
+.cdk-column-combinedDefAddress {
+
+}
+
+.cdk-column-plaintiffName {
+  min-width: 20em;
+}
+.cdk-column-caseFileDate {
+  margin-left: 2em;
 }

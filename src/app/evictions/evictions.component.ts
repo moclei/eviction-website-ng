@@ -11,11 +11,10 @@ export class EvictionsComponent implements OnInit {
   evictions: Eviction[];
   constructor() { }
 
-  onOpen(evictions: Eviction[]){
+  onOpen(evictions: Eviction[]) {
     console.log('Found evictions: ' + evictions);
     this.evictions = evictions;
   }
-
   ngOnInit() {
 
   }

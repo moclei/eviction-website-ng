@@ -10,7 +10,7 @@
         </mat-form-field>
         <mat-checkbox formControlName="soundexCheck">Search for names that sound the same</mat-checkbox>
         <button
-          class="btn btn-primary"
+          mat-button color="primary"
           type="submit"
           (click)="onSubmit()"
           [disabled]="!userForm.valid">Submit</button>
