@@ -11,12 +11,18 @@
 <div class="button-row">
   <button mat-button color="primary" (click)="listDebugRecords()">List debug records</button>
   <button mat-button color="accent" (click)="deleteDebugRecords()">Delete debug records</button>
+  <button mat-button color="danger" (click)="listMostRecentRecord()">List most recent records</button>
 </div>
 
 <div class="results-section">
   <h4> Results:</h4>
   <div class="mat-table-container mat-elevation-z8" >
     <mat-table #table [dataSource]="dataSource" matSort matSortActive="combinedDefendantName">
+      <!-- Eviction Upload Date Column -->
+      <ng-container matColumnDef="ev_added_date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header disableClear="true">Date Added</mat-header-cell>
+        <mat-cell *matCellDef="let element" (click)="openDialog(element)"> {{element.ev_added_date}} </mat-cell>
+      </ng-container>
       <!-- Defendant Name Column -->
       <ng-container matColumnDef="combinedDefendantName">
         <mat-header-cell *matHeaderCellDef mat-sort-header disableClear="true">Defendant Name</mat-header-cell>

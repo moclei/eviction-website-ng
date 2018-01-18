@@ -20,8 +20,10 @@ export class EvictionSearchInputComponent implements OnInit {
 
   hasResult = false;
   f: any;
+  useFilings = true;
+  useJudgments = true;
 
-  constructor(private evictionService: EvictionService) { }
+  constructor(private evictionService: EvictionService) {}
 
   ngOnInit() {
     /*

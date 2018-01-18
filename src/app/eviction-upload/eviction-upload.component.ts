@@ -33,7 +33,8 @@ export class EvictionUploadComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource();
   hasResult = false;
   evictionSource: Eviction[] = null;
-  displayedColumns = ['combinedDefendantName', 'recordType', 'combinedDefAddress', 'defendantZip', 'plaintiffName', 'dispositionDate'];
+  displayedColumns = ['ev_added_date', 'combinedDefendantName', 'recordType',
+    'combinedDefAddress', 'defendantZip', 'plaintiffName', 'dispositionDate'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -68,13 +69,14 @@ export class EvictionUploadComponent implements OnInit, OnDestroy {
                 this.evictionService.uploadEvictions(returnData)
                   .subscribe(
                     (message: string) => {
+                      // this.uploader.queue. = file.name + ' uploaded';
                       console.log('Evictions Uploaded, return message: ' + message);
                     }
                   );
               } catch (myError) {
                 console.log('error parsing sheet to json: ' + myError)
               }
-              console.log('returnData: ' + JSON.stringify(returnData));
+              // console.log('returnData: ' + JSON.stringify(returnData));
               return sheet;
             });
           }).map((results: Array<any>) => {
@@ -91,6 +93,7 @@ export class EvictionUploadComponent implements OnInit, OnDestroy {
       .subscribe(
         (evictions: Eviction[]) => {
           this.dataSource.data =  evictions;
+          console.log('Number of debug records: ' + evictions.length);
           if ( this.evictionSource && this.evictionSource.length > 0) {
             Observable.interval(100).subscribe(x => {
               this.dataSource.sort = this.sort;
@@ -105,12 +108,31 @@ export class EvictionUploadComponent implements OnInit, OnDestroy {
   deleteDebugRecords() {
     this.evictionService.deleteDebugRecords()
       .subscribe(
-        (evictions: Eviction[]) => {}
+        (evictions: Eviction[]) => {
+        }
       );
+  }
+
+  listMostRecentRecord() {
+    this.evictionService.listMostRecentRecord()
+      .subscribe(
+        (evictions: Eviction[]) => {
+          this.dataSource.data =  evictions;
+        }
+      );
+    this.hasResult = true;
   }
 
   ngOnInit() {
     this.subscription = this._uploadedXls.subscribe(this.uploadedXls);
+
+    this.uploader.onAfterAddingFile = f => {
+     /* if (this.uploader.queue.length > 1) {
+        this.uploader.removeFromQueue(this.uploader.queue[0]);
+      }*/
+      console.log('eviction-upload.component.ts, ngOnInit, onAfterAddingFile, file URL = ' + this.uploader.queue[0]._file.name);
+    };
+
   }
 
   ngOnDestroy() {

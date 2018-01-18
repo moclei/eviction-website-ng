@@ -3,22 +3,7 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  template: `
-    <nav class="navbar navbar-light bg-faded">
-      <a class="navbar-brand" href="#" [routerLink]="['home']">Eviction Search App</a>
-      <ul class="nav navbar-nav">
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" href="#" [routerLink]="['home']">Home</a>
-        </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" href="#" [routerLink]="['search']">Search</a>
-        </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" href="#" [routerLink]="['info']">Info</a>
-        </li>
-      </ul>
-    </nav>
- `,
+  templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {

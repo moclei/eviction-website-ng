@@ -7,7 +7,7 @@ import { HttpModule} from '@angular/http';
 import {
   MatToolbarModule, MatCardModule, MatTableModule, MatProgressBarModule,
   MatPaginatorModule, MatButtonModule, MatCheckboxModule, MatMenuModule,
-  MatIconModule, MatInputModule, MatSortModule, MatDialogModule, MatListModule
+  MatIconModule, MatInputModule, MatSortModule, MatDialogModule, MatListModule,
 } from '@angular/material'
 
 import { AppComponent } from './app.component';
@@ -21,8 +21,11 @@ import { EvictionService} from './eviction.service';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import {FileUploadModule} from 'ng2-file-upload';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AlertModule } from 'ngx-bootstrap';
+
+import { ScrollToModule } from 'ng2-scroll-to-el';
 
 
 
@@ -40,6 +43,7 @@ import { AlertModule } from 'ngx-bootstrap';
   ],
   imports: [
     AlertModule.forRoot(),
+    ScrollToModule.forRoot(),
     BrowserModule,
     CommonModule,
     FormsModule,
@@ -60,7 +64,8 @@ import { AlertModule } from 'ngx-bootstrap';
     MatSortModule,
     AppRoutingModule,
     MatButtonModule,
-    FileUploadModule
+    FileUploadModule,
+    FlexLayoutModule
   ],
   entryComponents: [
     EvictionDialogComponent

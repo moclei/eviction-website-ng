@@ -1,6 +1,11 @@
-<div id="search">
-    <h3 class="example-h2">Search by Name:</h3>
-    <div >
+<div fxFlex id="search" >
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Search by Name:
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
       <form class="example-container" [formGroup]="userForm">
         <mat-form-field>
           <input formControlName="inputFirstName" matInput placeholder="First Name" required>
@@ -9,13 +14,28 @@
           <input formControlName="inputLastName" matInput placeholder="Last Name" required>
         </mat-form-field>
         <mat-checkbox formControlName="soundexCheck">Search for names that sound the same</mat-checkbox>
-        <button
-          mat-button color="primary"
-          type="submit"
-          (click)="onSubmit()"
-          [disabled]="!userForm.valid">Submit</button>
-        <mat-progress-bar mode="indeterminate" *ngIf="submitted"></mat-progress-bar>
+
       </form>
-    </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div fxLayout="row" fxLayoutAlign="center none" >
+          <button
+            mat-button color="primary"
+            type="submit"
+            (click)="onSubmit()"
+            [disabled]="!userForm.valid">Submit</button>
+        <div fxFlex></div>
+          <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+      </div>
+      <mat-progress-bar mode="indeterminate" *ngIf="submitted"></mat-progress-bar>
+      <mat-menu #appMenu="matMenu">
+        <h4 class="example-h2">Search options:</h4>
+          <mat-checkbox class="example-margin" [(ngModel)]="useFilings">Filings</mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="useJudgments">Judgments</mat-checkbox>
+      </mat-menu>
+    </mat-card-actions>
+  </mat-card>
   </div>
 

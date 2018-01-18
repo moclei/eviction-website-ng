@@ -1,0 +1,16 @@
+
+mat-form-field.mat-form-field {
+  font-size: 16px;
+  width: 100%;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}

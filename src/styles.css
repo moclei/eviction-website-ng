@@ -24,14 +24,15 @@ a.danger {
   margin-bottom: 20px;
 }
 
-input.ng-invalid.ng-touched {
+/*input.ng-invalid.ng-touched {
   border: 1px solid red;
-}
-.example-container {
+}*/
+
+/*.example-container {
   display: flex;
   flex-direction: column;
   width: 50%;
-}
+}*/
 
 #search{
   padding: 100px 0px 0px 0px;
@@ -47,11 +48,6 @@ input.ng-invalid.ng-touched {
 .mat-table-header {
   min-height: 64px;
   padding: 8px 24px 0;
-}
-
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
 }
 
 .mat-table {
@@ -75,4 +71,47 @@ input.ng-invalid.ng-touched {
 }
 .cdk-column-caseFileDate {
   margin-left: 2em;
+}
+
+.dialog-print-content{
+  display: none;
+}
+
+@media print {
+
+  .results-section{
+    display:none;
+  }
+
+  #search{
+    display:none;
+  }
+
+  #mainNav{
+    display:none;
+  }
+
+  .dialog-print-content{
+    display: inline;
+    width: auto;
+    height: auto;
+    overflow: visible;
+  }
+
+  .dialog-view-content{
+    display: none;
+  }
+
+  .mat-list-item.mat-list-item{
+    font-size: 9.5pt;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mat-list.mat-list{
+    padding: 0;
+    margin: 0;
+  }
+  /* I then cut and pasted my print style sheet into this section */
+
 }

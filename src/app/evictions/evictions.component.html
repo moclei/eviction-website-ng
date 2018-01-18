@@ -1,6 +1,12 @@
- <mat-card>
-  <app-eviction-search-input (searchDone)="onOpen($event)"></app-eviction-search-input>
- </mat-card>
+
+   <div fxLayout='column'>
+     <div fxLayoutAlign="center" fxFlexOffset="2">
+       <app-eviction-search-input (searchDone)="onOpen($event)"></app-eviction-search-input>
+     </div>
+   </div>
+   <div fxLayout="column">
+     <div fxFlex fxFlexOffset="2"></div>
+   </div>
 
 <mat-card>
   <app-eviction-list [evictionSource]="evictions"></app-eviction-list>
