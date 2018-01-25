@@ -1,3 +1,90 @@
-<mat-card>
-  <p>Info Works!</p>
-</mat-card>
+<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
+<header>
+  <div class="container" id="maincontent" tabindex="-1">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="intro-text">
+          <h2 class="name">Get Help With Evictions in Bexar County</h2>
+          <hr class="star-light">
+          <span class="skills"></span>
+          <p class="skills">Dealing with the eviction process is hard.</p>
+          <p class="skills">Landlords in San Antonio with small to medium sized portfolios save time and money by getting help.</p>
+          <p class="skills">Get advice from experienced individuals in San Antonio.</p>
+          <button type="button" (click)="scrollToSearch();" class="btn btn-primary waves-light">Contact Us With Questions </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- Portfolio Grid Section
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="name">Contact</h2>
+        <span class="skills"></span>
+        <p class="skills">Send us your question below.</p>
+        <p class="skills">We'll try our best to respond to your question the same day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+<!-- Contact Section -->
+<section id="contact" #contact>
+  <div class="container" >
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="name">Contact</h2>
+        <hr class="star-dark mb-5">
+        <p class="skills">Send us your question below.</p>
+        <p class="skills">We'll try our best to respond to your question the same day.</p>
+        <mat-card *ngIf="!sendingMessage">
+          <!--<mat-card-header>
+            <mat-card-title>
+              Search by Name:
+            </mat-card-title>
+          </mat-card-header>-->
+          <mat-card-content>
+            <form class="example-container" [formGroup]="contactForm">
+              <mat-form-field>
+                <input formControlName="inputName" matInput placeholder="Your Name" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input formControlName="inputEmail" matInput placeholder="Your Email" required>
+              </mat-form-field>
+              <mat-form-field>
+                <input formControlName="inputPhone" matInput placeholder="Your Phone (Optional - if you want a call back)">
+              </mat-form-field>
+              <mat-form-field>
+                <input formControlName="inputMessage" matInput placeholder="Your Question">
+              </mat-form-field>
+            </form>
+          </mat-card-content>
+          <mat-card-actions>
+              <button
+                mat-button color="primary"
+                type="submit"
+                (click)="onSubmit()"
+                [disabled]="!contactForm.valid">Submit</button>
+            <mat-progress-bar mode="indeterminate" *ngIf="submitted"></mat-progress-bar>
+          </mat-card-actions>
+        </mat-card>
+        <mat-spinner class="spinner" *ngIf="sendingMessage && !sentMessage"></mat-spinner>
+        <div *ngIf="sentMessage">
+          <app-checkmark></app-checkmark>
+          <p>Message Sent!</p>
+          <button
+            mat-button color="primary"
+            type="submit"
+            (click)="sendingMessage = false; sentMessage = false;">Send Another</button>
+        </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- Footer -->
+

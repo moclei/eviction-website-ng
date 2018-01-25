@@ -14,12 +14,18 @@ export class EvictionService {
   constructor(private http: Http) {
   }
 
-  getEvictions(defendantFirstName: string, defendantLastName: string, soundexCheck: boolean) {
+  getEvictions(defendantFirstName: string,
+               defendantLastName: string,
+               soundexCheck: boolean,
+               useFilings: boolean,
+               useJudgments: boolean) {
     // console.log('getEvictions called');
     const body = {
       'defendantFirstName': defendantFirstName,
       'defendantLastName': defendantLastName,
-      'soundexCheck': soundexCheck
+      'soundexCheck': soundexCheck,
+      'useFilings': useFilings,
+      'useJudgments': useJudgments
     };
     // console.log('evictions.service.getEvictions: body is: ' + body);
     return this.http.post('http://localhost:3000/evictions', body)

@@ -2,3 +2,12 @@
 .example-spacer {
   flex: 0.5 1 auto;
 }
+
+.disclaimer{
+  height: 10em;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}

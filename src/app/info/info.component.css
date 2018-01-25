@@ -2,3 +2,12 @@
 .example-spacer {
   flex: 0.5 1 auto;
 }
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.spinner{
+  width: 100%;
+  margin: 4em auto 0;
+}

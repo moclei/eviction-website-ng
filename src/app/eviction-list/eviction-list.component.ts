@@ -15,6 +15,7 @@ export class EvictionListComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() evictionSource: Eviction[] = null;
   displayedColumns = ['combinedDefendantName', 'recordType', 'combinedDefAddress', 'defendantZip', 'plaintiffName', 'dispositionDate'];
   dataSource = new MatTableDataSource();
+  results = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -53,7 +54,7 @@ export class EvictionListComponent implements OnInit, OnChanges, AfterViewInit {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
 
-        this.scrollService.scrollTo(this.scrollToPoint.nativeElement);
+        this.scrollService.scrollTo(this.scrollToPoint.nativeElement, 500, -175);
       });
     }
   }

@@ -1,6 +1,6 @@
 
    <div fxLayout='column'>
-     <div fxLayoutAlign="center" fxFlexOffset="2">
+     <div fxLayoutAlign="center" fxFlexOffset="4">
        <app-eviction-search-input (searchDone)="onOpen($event)"></app-eviction-search-input>
      </div>
    </div>
@@ -8,7 +8,5 @@
      <div fxFlex fxFlexOffset="2"></div>
    </div>
 
-<mat-card>
   <app-eviction-list [evictionSource]="evictions"></app-eviction-list>
-</mat-card>
 

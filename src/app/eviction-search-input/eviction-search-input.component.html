@@ -2,7 +2,7 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>
-        Search by Name:
+        <h4>Search by Name:</h4>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
@@ -23,7 +23,7 @@
             mat-button color="primary"
             type="submit"
             (click)="onSubmit()"
-            [disabled]="!userForm.valid">Submit</button>
+            [disabled]="!userForm.valid">Search</button>
         <div fxFlex></div>
           <button mat-icon-button [matMenuTriggerFor]="appMenu">
             <mat-icon>more_vert</mat-icon>
@@ -31,7 +31,7 @@
       </div>
       <mat-progress-bar mode="indeterminate" *ngIf="submitted"></mat-progress-bar>
       <mat-menu #appMenu="matMenu">
-        <h4 class="example-h2">Search options:</h4>
+        <h4 class="mat-subheading-2 example-margin">Search options:</h4>
           <mat-checkbox class="example-margin" [(ngModel)]="useFilings">Filings</mat-checkbox>
           <mat-checkbox class="example-margin" [(ngModel)]="useJudgments">Judgments</mat-checkbox>
       </mat-menu>

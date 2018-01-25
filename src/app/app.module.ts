@@ -8,6 +8,7 @@ import {
   MatToolbarModule, MatCardModule, MatTableModule, MatProgressBarModule,
   MatPaginatorModule, MatButtonModule, MatCheckboxModule, MatMenuModule,
   MatIconModule, MatInputModule, MatSortModule, MatDialogModule, MatListModule,
+  MatProgressSpinnerModule
 } from '@angular/material'
 
 import { AppComponent } from './app.component';
@@ -20,12 +21,17 @@ import { EvictionUploadComponent } from './eviction-upload/eviction-upload.compo
 import { EvictionService} from './eviction.service';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import {FileUploadModule} from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AlertModule } from 'ngx-bootstrap';
 
 import { ScrollToModule } from 'ng2-scroll-to-el';
+import { FooterComponent } from './footer/footer.component';
+import {CoreModule} from './CoreModule';
+import { DisclaimerComponent } from './disclaimer/disclaimer.component';
+import {ContactService} from './contact.service';
+import { CheckmarkComponent } from './animations/checkmark/checkmark.component';
 
 
 
@@ -39,7 +45,10 @@ import { ScrollToModule } from 'ng2-scroll-to-el';
     HeaderComponent,
     HomePageComponent,
     InfoComponent,
-    EvictionUploadComponent
+    EvictionUploadComponent,
+    FooterComponent,
+    DisclaimerComponent,
+    CheckmarkComponent
   ],
   imports: [
     AlertModule.forRoot(),
@@ -65,13 +74,17 @@ import { ScrollToModule } from 'ng2-scroll-to-el';
     AppRoutingModule,
     MatButtonModule,
     FileUploadModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatProgressSpinnerModule,
+    CoreModule
   ],
   entryComponents: [
-    EvictionDialogComponent
+    EvictionDialogComponent,
+    DisclaimerComponent
   ],
   providers: [
-    EvictionService
+    EvictionService,
+    ContactService
   ],
   bootstrap: [AppComponent]
 })
