@@ -1,0 +1,45 @@
+<div class="dialog-view-content">
+  <div mat-dialog-content >
+  <!-- Consent Section -->
+    <section id="disclaimer" #disclaimer >
+      <div class="container text-center">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+          <!--<img class="img-responsive" src="/img/profile.png" alt="">-->
+          <!--<div class="intro-text">-->
+          <div class="disclaimer-heading">
+            <h4 class="name">Bexar County Eviction and Small Claims Records Search:</h4>
+            <span class="skills"></span>
+            <p class="skills">The eviction and small claims court record  information provided through this internet-based website (“site”) is a free public service.
+              The information accessible on the site consists solely of publicly available eviction and small claims court data provided to the site sponsors by Bexar County Information Services and the JP courts serving Bexar County.
+              Neither Bexar County nor the JP courts, judges nor their employees are in any way responsible for the operation of this site.
+              Use of this search constitutes agreement with the Terms and Conditions of Use below.</p>
+          </div>
+          <form class="example-container" [formGroup]="consentForm">
+            <mat-form-field>
+              <textarea matInput disabled class="skills disclaimer">
+                  Disclaimer, Terms and Conditions of Use
+
+                  By accessing this site and/or its information, the individual or entity (“Visitor”) agrees to the Disclaimer, Terms and Conditions of Use, and to use this site, its information, or both in accordance with all applicable local ordinances as well as Texas and federal laws.
+
+                  All information available through this site is provided “as is;” subject to changes and updates at any time; and provided with no warranties, express or implied, as to quality, content, accuracy, validity, reliability, timeliness, or completeness. In no event shall the site sponsors or Bexar County be liable for any damages, of any nature whatsoever, arising out of the use of, or the inability to use this site or the site's information.
+                  The site’s information is not for official use.
+                  Commercial use of the site’s information is strictly prohibited.
+                  The site’s information is extracted from multiple sources and is not subject to independent verification.
+                  Any links to external servers do not imply any endorsement of the opinions or ideas expressed therein, or guarantee the validity of the information provided.
+                  We assume no liability for availability or compatibility with web site users’ software or computers.
+                  Any unauthorized use or misuse of the site or the site's information by Visitor may subject Visitor to civil or criminal proceedings, or both.  For legal advice, you should contact a lawyer. If you disagree with this disclaimer please do not use this site
+              </textarea>
+            </mat-form-field>
+            <mat-checkbox formControlName="consentCheck" [(ngModel)]="consentChecked">I agree to the terms and conditions</mat-checkbox>
+          </form>
+          <div>
+            <button type="button" [disabled]="!consentChecked" (click)="onConsent();" mat-dialog-close class="btn btn-primary waves-light">Go To Search</button>
+          </div>
+          <div>
+            <button type="button" mat-dialog-close class="btn btn-primary waves-light">I Do Not Agree</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

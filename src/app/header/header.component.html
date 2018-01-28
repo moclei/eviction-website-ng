@@ -3,27 +3,21 @@
   <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header page-scroll">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+       <div class="navbar-header page-scroll">
+        <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-        </button>
+        </button>-->
         <a class="navbar-brand" href="#home">Eviction Search Bexar County</a>
       </div>
-
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div  id="bs-example-navbar-collapse-1" class=" navbar-collapse"><!--class="collapse navbar-collapse"-->
         <ul class="nav navbar-nav navbar-right">
           <li class="page-scroll">
-            <!--<a href="#search" routerLink="/search" routerLinkActive="active">Search</a>-->
             <a href="#search" (click)="btnClick()" routerLink="/info" routerLinkActive="inactive">Search</a>
           </li>
           <li class="page-scroll">
             <a href="#info" routerLink="/info" routerLinkActive="active">Info</a>
           </li>
-          <!--
-          <li class="page-scroll">
-            <a  routerLink="/upload" routerLinkActive="active">Upload</a>
-          </li>-->
         </ul>
 
       </div>

@@ -4,6 +4,7 @@ import {
 import {FileUploader} from 'ng2-file-upload/ng2-file-upload';
 import * as XLSX from 'xlsx';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/interval';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
 import {EvictionService} from '../eviction.service';

@@ -3,6 +3,7 @@ import {EvictionService} from '../eviction.service';
 import {Eviction} from '../eviction.model';
 import {MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatPaginator} from '@angular/material';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/timer';
 import {ScrollToService} from 'ng2-scroll-to-el';
 
 @Component({
@@ -30,9 +31,11 @@ export class EvictionListComponent implements OnInit, OnChanges, AfterViewInit {
 
     const dialogRef = this.dialog.open(EvictionDialogComponent, {
       width: '80em',
+      height: '75%',
       data: element,
       position: dialogPos
     });
+
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

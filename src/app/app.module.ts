@@ -24,8 +24,6 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { FileUploadModule } from 'ng2-file-upload';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { AlertModule } from 'ngx-bootstrap';
-
 import { ScrollToModule } from 'ng2-scroll-to-el';
 import { FooterComponent } from './footer/footer.component';
 import {CoreModule} from './CoreModule';
@@ -51,7 +49,6 @@ import { CheckmarkComponent } from './animations/checkmark/checkmark.component';
     CheckmarkComponent
   ],
   imports: [
-    AlertModule.forRoot(),
     ScrollToModule.forRoot(),
     BrowserModule,
     CommonModule,

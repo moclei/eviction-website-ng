@@ -1,17 +1,27 @@
 import { Http, Response } from '@angular/http';
 import {Injectable} from '@angular/core';
 import * as _ from 'lodash-es';
-import 'rxjs/Rx';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
 
 import { Eviction } from './eviction.model';
-import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class EvictionService {
   // private evictions: Eviction[] = [];
+  private connectionUrl = '';
+  private isDevelopment = false;
 
   constructor(private http: Http) {
+    if(this.isDevelopment) {
+      this.connectionUrl = 'http://localhost:3000';
+    } else {
+      this.connectionUrl = 'https://evictionssearchn-1516845969440.appspot.com';
+    }
   }
 
   getEvictions(defendantFirstName: string,
@@ -28,7 +38,7 @@ export class EvictionService {
       'useJudgments': useJudgments
     };
     // console.log('evictions.service.getEvictions: body is: ' + body);
-    return this.http.post('http://localhost:3000/evictions', body)
+    return this.http.post(this.connectionUrl + '/evictions', body)
       .map((response: Response) => {
         const evictions = response.json().items;
         const transformedEvictions: Eviction[] = [];
@@ -63,19 +73,9 @@ export class EvictionService {
           );
         }
         // console.log('Evictions Service-> Step 2')
-        const myTransformedEvictions = _.uniqBy(transformedEvictions, function (v) {
+        return _.uniqBy(transformedEvictions, function (v) {
           return v.combinedDefendantName + ' ' + v.caseNumber + ' ' + v.disposition;
         });
-        /*
-        for (let  i = 0; i < myTransformedEvictions.length; i++){
-          console.log(i + ', First Name: ' + myTransformedEvictions[i].defendantFirstName
-            + ', Last Name: ' + myTransformedEvictions[i].defendantLastName);
-        }*/
-        // console.log('Eviction.Service, returned from search: ' + myTransformedEvictions);
-        // this.evictions = myTransformedEvictions;
-        // this.searchPerformed(this.evictions);
-        // this.newResults.emit(this.evictions);
-        return myTransformedEvictions;
       })
       .catch(error => Observable.throw('Error in x service: ' + error));
 
@@ -86,7 +86,7 @@ export class EvictionService {
       'sheetData': sheetData
     };
 
-    return this.http.post('http://localhost:3000/upload', body)
+    return this.http.post(this.connectionUrl + '/upload', body)
       .map((response: Response) => {
         // const message = response.json().items;
         return response.json().items;
@@ -101,7 +101,7 @@ export class EvictionService {
       'soundexCheck': '',
       'isDebug': true
     };
-    return this.http.post('http://localhost:3000/evictions', body)
+    return this.http.post(this.connectionUrl + '/evictions', body)
       .map((response: Response) => {
         const evictions = response.json().items;
         const transformedEvictions: Eviction[] = [];
@@ -139,8 +139,8 @@ export class EvictionService {
       .catch(error => Observable.throw('Error in debug service: ' + error));
   }
 
-  deleteDebugRecords(){
-    return this.http.delete('http://localhost:3000/evictions')
+  deleteDebugRecords() {
+    return this.http.delete(this.connectionUrl + 'evictions')
       .map((response: Response) => {
         const message = response.json().message;
         console.log('Eviction.service.ts-> deleteDebugRecords()-> response message: ' + message);
@@ -150,7 +150,7 @@ export class EvictionService {
   }
 
   listMostRecentRecord() {
-    return this.http.get('http://localhost:3000/evictions')
+    return this.http.get(this.connectionUrl + 'evictions')
       .map((response: Response) => {
           const evictions = response.json().items;
         const transformedEvictions: Eviction[] = [];
